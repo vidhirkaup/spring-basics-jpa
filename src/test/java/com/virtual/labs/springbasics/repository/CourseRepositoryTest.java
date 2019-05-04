@@ -37,14 +37,14 @@ public class CourseRepositoryTest {
 
     @Test
     @DirtiesContext
-    public void save_new_course(){
+    public void save_new_course() {
         Course course = courseRepository.save(new Course("JUNIT - Test Insert of New Course"));
         assertEquals("JUNIT - Test Insert of New Course", courseRepository.findById(course.getId()).getName());
     }
 
     @Test
     @DirtiesContext
-    public void save_existing_course(){
+    public void save_existing_course() {
         Course newlyCreatedCourse = courseRepository.save(new Course("JUNIT - Test Update of existing Course"));
         Course updatedRecentlyCreatedCourse = courseRepository.save(new Course(newlyCreatedCourse.getId(), newlyCreatedCourse.getName().toUpperCase()));
         assertEquals("JUNIT - TEST UPDATE OF EXISTING COURSE", courseRepository.findById(updatedRecentlyCreatedCourse.getId()).getName());
