@@ -24,30 +24,30 @@ public class JPQLTest {
     @Autowired
     EntityManager entityManager;
 
-    @SuppressWarnings("JpaQlInspection")
+    @SuppressWarnings({"JpaQlInspection", "JpaQueryApiInspection"})
     @Test
     public void jpql_query() {
-        Query query = entityManager.createQuery("SELECT c FROM Course c");
+        Query query = entityManager.createNamedQuery("query_get_all_courses");
         List courses = query.getResultList();
         logger.info("============= SELECT c FROM Course c =============");
         logger.info("{}", courses);
         logger.info("============= SELECT c FROM Course c =============");
     }
 
-    @SuppressWarnings("JpaQlInspection")
+    @SuppressWarnings({"JpaQlInspection", "JpaQueryApiInspection"})
     @Test
     public void jpql_typed() {
-        TypedQuery<Course> typedQuery = entityManager.createQuery("SELECT c FROM Course c", Course.class);
+        TypedQuery<Course> typedQuery = entityManager.createNamedQuery("query_get_all_courses", Course.class);
         List<Course> courses = typedQuery.getResultList();
         logger.info("============= SELECT c FROM Course c =============");
         logger.info("{}", courses);
         logger.info("============= SELECT c FROM Course c =============");
     }
 
-    @SuppressWarnings("JpaQlInspection")
+    @SuppressWarnings({"JpaQlInspection", "JpaQueryApiInspection"})
     @Test
     public void jpql_where() {
-        TypedQuery<Course> typedQuery = entityManager.createQuery("SELECT c FROM Course c where name like '%In%'", Course.class);
+        TypedQuery<Course> typedQuery = entityManager.createNamedQuery("query_get_specific_course", Course.class);
         List<Course> courses = typedQuery.getResultList();
         logger.info("============= SELECT c FROM Course c where name like '%In%' =============");
         logger.info("{}", courses);
