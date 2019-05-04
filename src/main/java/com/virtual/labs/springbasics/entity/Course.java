@@ -1,6 +1,10 @@
 package com.virtual.labs.springbasics.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.StringJoiner;
 
 @Entity
@@ -13,6 +17,12 @@ public class Course {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
+    @UpdateTimestamp
+    private LocalDateTime lastUpdatedDate;
 
     protected Course() {
     }
