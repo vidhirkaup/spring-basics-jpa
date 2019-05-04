@@ -75,6 +75,7 @@ public class CourseRepository {
         logger.info("##### {}", dojoCourse);
 
         entityManager.flush();
+
     }
 
 }

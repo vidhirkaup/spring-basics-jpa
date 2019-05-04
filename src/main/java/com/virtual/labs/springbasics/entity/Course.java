@@ -1,17 +1,17 @@
 package com.virtual.labs.springbasics.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.StringJoiner;
 
 @Entity
+@Table(name = "Course")
 public class Course {
 
     @Id
     @GeneratedValue
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
     protected Course() {

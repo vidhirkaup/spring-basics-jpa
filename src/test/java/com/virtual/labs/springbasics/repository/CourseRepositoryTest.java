@@ -8,10 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBasicsJpaApplication.class)
@@ -48,6 +50,12 @@ public class CourseRepositoryTest {
         Course newlyCreatedCourse = courseRepository.save(new Course("JUNIT - Test Update of existing Course"));
         Course updatedRecentlyCreatedCourse = courseRepository.save(new Course(newlyCreatedCourse.getId(), newlyCreatedCourse.getName().toUpperCase()));
         assertEquals("JUNIT - TEST UPDATE OF EXISTING COURSE", courseRepository.findById(updatedRecentlyCreatedCourse.getId()).getName());
+    }
+
+    @Test(expected = DataIntegrityViolationException.class)
+    @DirtiesContext
+    public void save_null_course() {
+        courseRepository.save(new Course(null));
     }
 
 }
