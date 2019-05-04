@@ -37,11 +37,44 @@ public class CourseRepository {
     }
 
     public void playWithEntityManager() {
-        Course course = new Course("boot in 10 steps");
-        entityManager.persist(course);
-        logger.info("{}", course);
-        course.setName("BOOT IN 10 STEPS");
-        logger.info("{}", course);
+        Course bootCourse = new Course("boot in 10 steps");
+        entityManager.persist(bootCourse);
+        logger.info("----- {}", bootCourse);
+
+        bootCourse.setName("BOOT IN 10 STEPS - updated");
+        logger.info("----- {}", bootCourse);
+        entityManager.flush();
+
+        // Trying flush() and detach()
+        Course angularCourse = new Course("angular course");
+        entityManager.persist(angularCourse);
+        logger.info("----- {}", angularCourse);
+        entityManager.flush();
+
+        entityManager.detach(angularCourse);
+        angularCourse.setName("ANGULAR COURSE - updated");
+        logger.info("----- {}", angularCourse);
+
+
+        // Trying refresh
+        Course reactCourse = new Course("reactJS course");
+        entityManager.persist(reactCourse);
+        logger.info("----- {}", reactCourse);
+
+        Course dojoCourse = new Course("dojo course");
+        entityManager.persist(dojoCourse);
+        logger.info("----- {}", dojoCourse);
+
+        entityManager.flush();
+
+        reactCourse.setName("reactJS course - updated");
+        dojoCourse.setName("dojo course - updated");
+
+        entityManager.refresh(reactCourse);
+        logger.info("##### {}", reactCourse);
+        logger.info("##### {}", dojoCourse);
+
+        entityManager.flush();
     }
 
 }
