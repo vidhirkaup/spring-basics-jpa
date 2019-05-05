@@ -1,7 +1,5 @@
 package com.virtual.labs.springbasics;
 
-import com.virtual.labs.springbasics.entity.Passport;
-import com.virtual.labs.springbasics.entity.Student;
 import com.virtual.labs.springbasics.repository.CourseRepository;
 import com.virtual.labs.springbasics.repository.StudentRepository;
 import org.slf4j.Logger;
