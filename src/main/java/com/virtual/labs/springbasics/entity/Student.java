@@ -18,6 +18,9 @@ public class Student {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @OneToOne
+    private Passport passport;
+
     @CreationTimestamp
     private LocalDateTime createdDate;
 
@@ -41,6 +44,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
     }
 
     @Override

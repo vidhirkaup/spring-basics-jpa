@@ -1,6 +1,9 @@
 package com.virtual.labs.springbasics;
 
+import com.virtual.labs.springbasics.entity.Passport;
+import com.virtual.labs.springbasics.entity.Student;
 import com.virtual.labs.springbasics.repository.CourseRepository;
+import com.virtual.labs.springbasics.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,10 @@ public class SpringBasicsJpaApplication implements CommandLineRunner {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    CourseRepository courseRepository;
+    CourseRepository courseRepository;;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBasicsJpaApplication.class, args);
@@ -22,6 +28,6 @@ public class SpringBasicsJpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        courseRepository.playWithEntityManager();
+        studentRepository.saveStudentWithPassport();
     }
 }
