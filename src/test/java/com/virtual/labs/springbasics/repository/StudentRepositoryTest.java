@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringBasicsJpaApplication.class)
@@ -25,8 +26,10 @@ public class StudentRepositoryTest {
     EntityManager entityManager;
 
     @Test
+    @Transactional
     public void findById_student_and_passport() {
         Student student = entityManager.find(Student.class, 20002L);
         logger.info("================= Student {}", student);
+        logger.info("================= Student {}", student.getPassport());
     }
 }

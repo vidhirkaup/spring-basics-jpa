@@ -18,7 +18,7 @@ public class Student {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Passport passport;
 
     @CreationTimestamp
@@ -59,7 +59,6 @@ public class Student {
         return new StringJoiner(", ", Student.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("name='" + name + "'")
-                .add("passport=" + passport)
                 .add("createdDate=" + createdDate)
                 .add("lastUpdatedDate=" + lastUpdatedDate)
                 .toString();
