@@ -12,8 +12,9 @@ insert into student(id, name, passport_id, created_date, last_updated_date) valu
 insert into student(id, name, passport_id, created_date, last_updated_date) values (20002, 'Bob', 40002, sysdate(), sysdate());
 insert into student(id, name, passport_id, created_date, last_updated_date) values (20003, 'Cathy', 40003, sysdate(), sysdate());
 
-insert into review(id, rating, description, created_date, last_updated_date) values (50001, 1, 'Good Course', sysdate(), sysdate());
-insert into review(id, rating, description, created_date, last_updated_date) values (50002, 2, 'Better Course', sysdate(), sysdate());
-insert into review(id, rating, description, created_date, last_updated_date) values (50003, 3, 'Best Course', sysdate(), sysdate());
-insert into review(id, rating, description, created_date, last_updated_date) values (50004, 4, 'Awesome Course', sysdate(), sysdate());
-insert into review(id, rating, description, created_date, last_updated_date) values (50005, 5, 'Superb Course', sysdate(), sysdate());
+insert into review(id, rating, description, course_id, created_date, last_updated_date) values (50001, 1, 'Good Course', 10001, sysdate(), sysdate());
+insert into review(id, rating, description, course_id, created_date, last_updated_date) values (50002, 1, 'Better Course', 10002, sysdate(), sysdate());
+insert into review(id, rating, description, course_id, created_date, last_updated_date) values (50003, 2, 'Best Course', 10002, sysdate(), sysdate());
+insert into review(id, rating, description, course_id, created_date, last_updated_date) values (50004, 1, 'Awesome Course', 10003, sysdate(), sysdate());
+insert into review(id, rating, description, course_id, created_date, last_updated_date) values (50005, 2, 'Superb Course', 10003, sysdate(), sysdate());
+insert into review(id, rating, description, course_id, created_date, last_updated_date) values (50006, 3, 'Superb Course', 10003, sysdate(), sysdate());

@@ -27,5 +27,7 @@ public class SpringBasicsJpaApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         studentRepository.saveStudentWithPassport();
+
+        courseRepository.addReviewsForCourse();
     }
 }

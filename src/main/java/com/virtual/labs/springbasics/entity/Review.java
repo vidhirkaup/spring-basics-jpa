@@ -1,8 +1,12 @@
 package com.virtual.labs.springbasics.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.StringJoiner;
@@ -19,8 +23,13 @@ public class Review {
 
     private String description;
 
+    @ManyToOne
+    private Course course;
+
+    @CreationTimestamp
     private LocalDateTime createdDate;
 
+    @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
 
     public Review() {
@@ -49,6 +58,14 @@ public class Review {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override

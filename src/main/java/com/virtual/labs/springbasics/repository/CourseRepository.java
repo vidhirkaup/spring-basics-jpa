@@ -1,6 +1,7 @@
 package com.virtual.labs.springbasics.repository;
 
 import com.virtual.labs.springbasics.entity.Course;
+import com.virtual.labs.springbasics.entity.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,4 +79,20 @@ public class CourseRepository {
 
     }
 
+    public void addReviewsForCourse() {
+
+        Course course = findById(10003L);
+
+        Review review1 = new Review("4", "a 4-rating");
+        Review review2 = new Review("5", "a 5-rating");
+
+        course.addReview(review1);
+        review1.setCourse(course);
+
+        course.addReview(review2);
+        review2.setCourse(course);
+
+        entityManager.persist(review1);
+        entityManager.persist(review2);
+    }
 }

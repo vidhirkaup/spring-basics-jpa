@@ -1,7 +1,7 @@
 package com.virtual.labs.springbasics.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -24,7 +24,7 @@ public class Passport {
     @CreationTimestamp
     private LocalDateTime createdDate;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
 
     public Passport() {
