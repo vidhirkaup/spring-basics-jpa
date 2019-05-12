@@ -17,4 +17,7 @@ public class Order {
 
     @OneToOne(mappedBy = "order", fetch = FetchType.LAZY, optional = false)
     private Invoice invoice;
+
+    @ManyToOne(optional = false)
+    private Customer customer;
 }
