@@ -12,6 +12,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -58,4 +60,10 @@ public class CourseRepositoryTest {
         courseRepository.save(new Course(null));
     }
 
+    @Test
+    @Transactional
+    public void retrieve_reviews_for_course() {
+        Course course = courseRepository.findById(10003L);
+        logger.info("Reviews -> {}", course.getReviews());
+    }
 }
